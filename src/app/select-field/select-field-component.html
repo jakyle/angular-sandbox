@@ -10,14 +10,21 @@
 	</div>
 
 	<ng-template #optionsMenu>
-		<div class="flex flex-col bg-white rounded border border-slate-900 p-px" cdkMenu [style.width]="width$ | async">
-			<input class="h-8 focus:outline-none px-2 py-1 focus:ring-2 ring-sky-500" />
-			<div class="flex flex-col">
-				<button *ngFor="let option of options"
-					class="hover:bg-slate-200 flex flex-row justify-start active:bg-slate-300 focus:outline-none ring-sky-500 focus:ring-2 px-2 py-1"
-					(cdkMenuItemTriggered)="value.next(option.value)" cdkMenuItem>
-					{{option.label}}
-				</button>
+		<div class="bg-white rounded border border-slate-900 p-1" cdkMenu [style.width]="width$ | async">
+			<div class="flex flex-col w-full items-center gap-y-1">
+				<div cdkMenuItem id="yes" (focus)="onInputSearchFocus()" class="h-8 mt-1 w-11/12">
+					<input #searchInput (ngModelChange)="onInputChange($event)" [(ngModel)]="searchValue"
+						(click)="$event.stopPropagation()"
+						class="h-full w-full border border-slate-500 rounded focus:outline-none px-2 py-1 focus:ring-2 ring-sky-500" />
+				</div>
+
+				<ng-container *ngIf="filteredOptions$ | async as filteredOptions">
+					<button *ngFor="let option of filteredOptions"
+						class="hover:bg-slate-200 w-full rounded flex flex-row justify-start active:bg-slate-300 focus:outline-none ring-sky-500 focus:ring-2 px-2 py-1"
+						(cdkMenuItemTriggered)="value.next(option.value)" cdkMenuItem>
+						{{option.label}}
+					</button>
+				</ng-container>
 			</div>
 		</div>
 	</ng-template>

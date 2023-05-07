@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {CdkMenuModule} from '@angular/cdk/menu';
 import {OverlayModule} from '@angular/cdk/overlay';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SelectFieldComponent } from './select-field/select-field.component';
@@ -22,7 +23,9 @@ import { RecursiveFieldComponent } from './recursive-field/recursive-field.compo
   imports: [
     BrowserModule,
     CdkMenuModule,
-    OverlayModule
+    OverlayModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ContainerRefDirective } from './container-ref.directive';
 import { Field, FieldType } from '../models/Field.model';
 import { TextFieldComponent } from '../text-field/text-field.component';
@@ -14,7 +14,6 @@ import { SelectFieldComponent } from '../select-field/select-field.component';
 export class FieldFactoryComponent implements OnInit {
   @ViewChild(ContainerRefDirective, {static: true}) containerRef!: ContainerRefDirective;
   @Input({required: true}) field!: Field;
-  @HostBinding('class.contents') contents = true;
 
   ngOnInit(): void {
     this.loadComponent();
