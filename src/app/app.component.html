@@ -2,13 +2,15 @@
 	<section class="grid grid-rows-2 gap-2 h-1/2 w-3/12">
 		<div class="flex flex-col justify-center items-center bg-slate-600 rounded p-2 gap-2">
 			<h2 class="text-lg text-slate-50 font-semibold">Field Factory</h2>
-			<app-field-factory *ngFor="let field of fields" [field]="field"></app-field-factory>
+			<app-field-factory *ngFor="let field of fields" class="italic" [field]="field"></app-field-factory>
 		</div>
 	
 		<div class="flex flex-col justify-center items-center bg-slate-600 rounded p-2 gap-2">
 			<h2 class="text-lg text-slate-50 font-semibold">Recursive Field Factory</h2>
-			<app-recursive-field *ngFor="let field of recursiveFields" [field]="field.field"
+			<div class="grid grid-cols-2 grid-flow-row gap-2">
+				<app-recursive-field *ngFor="let field of recursiveFields" [field]="field.field"
 				[child]="field.child"></app-recursive-field>
+			</div>
 		</div>
 	</section>
 </main>

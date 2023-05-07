@@ -8,7 +8,7 @@ import { Option } from '../models/Field.model';
   selector: 'app-select-field',
   templateUrl: './select-field-component.html',
   host: {
-    'class': 'w-36 h-8',
+    'class': 'w-48 h-8',
   }
 })
 export class SelectFieldComponent implements AfterViewInit, OnDestroy {
