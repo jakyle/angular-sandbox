@@ -8,8 +8,13 @@ import { Position } from '../toast';
   templateUrl: './toast-overlay.component.html',
 })
 export class ToastOverlayComponent {
-  @HostBinding('class') class = 'absolute top-0 left-0 p-4 pointer-events-none w-screen h-screen grid grid-cols-3 [&>ul]:flex [&>ul]:overflow-hidden [&>ul]:gap-y-2 [&>ul]:relative overflow-hidden';
+
+  // how do we position these pesky toasts? with css grid!
+  @HostBinding('class') class = 'w-screen h-screen absolute top-0 left-0 p-4 grid grid-cols-3 pointer-events-none [&>ul]:flex [&>ul]:overflow-hidden [&>ul]:gap-y-2 [&>ul]:relative overflow-hidden';
+
   constructor(private toastService: ToastService) { }
+
+  // we want toasts grouped by position
   toasts$ = this.toastService.toasts$.pipe(map(toasts => ({
     [Position.TOP_LEFT]: toasts.filter(t => t.position === Position.TOP_LEFT),
     [Position.TOP_CENTER]: toasts.filter(t => t.position === Position.TOP_CENTER),
@@ -19,6 +24,7 @@ export class ToastOverlayComponent {
     [Position.BOTTOM_RIGHT]: toasts.filter(t => t.position === Position.BOTTOM_RIGHT),
   })));
 
+  // the toast can handle this or the overlay, I personally like to keep my services contained as much as possible, so the toast item can be more generic, ie. dumb.
   destroyToast(id: number) {
     this.toastService.destroyToast(id);
   }

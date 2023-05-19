@@ -9,9 +9,7 @@ type ID = number;
 })
 export class ToastService {
 
-  constructor() { }
-
-  id = 0; // this is used to give each toast a unique id, so we can remove it later.
+  private id = 0; // this is used to give each toast a unique id, so we can remove it later.
   private toast = new Subject<Toast>(); // does not need to be a behavior subject, the point of this Subject is to pass on the next toast!
   private removeToast = new Subject<ID>(); // this is a subject that will be used to remove a toast, it will be merged with the toast subject so we know when a toast has been removed.
 
