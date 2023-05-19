@@ -8,8 +8,14 @@ module.exports = {
     data: {
       opened: 'menu~="opened"',
       closed: 'menu~="closed"',
+      'info': 'type="info"',
+      'success': 'type="success"',
+      'warning': 'type="warning"',
+      'danger': 'type="danger"',
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 

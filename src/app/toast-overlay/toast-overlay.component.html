@@ -1,0 +1,27 @@
+<ng-container *ngIf="toasts$ | async as toasts">
+
+	<ul class="justify-self-start flex-col">
+		<li *ngFor="let toast of toasts['top-left']"><app-toast-item (close)="destroyToast($event)" [toast]="toast" class="pointer-events-auto"></app-toast-item></li>
+	</ul>
+
+	<ul class="justify-self-center flex-col">
+		<li *ngFor="let toast of toasts['top-center']"><app-toast-item (close)="destroyToast($event)" [toast]="toast" class="pointer-events-auto"></app-toast-item></li>
+	</ul>
+
+	<ul class="justify-self-end flex-col">
+		<li *ngFor="let toast of toasts['top-right']"><app-toast-item (close)="destroyToast($event)" [toast]="toast" class="pointer-events-auto"></app-toast-item></li>
+	</ul>
+
+	<ul class="justify-self-start flex-col-reverse">
+		<li *ngFor="let toast of toasts['bottom-left']"><app-toast-item (close)="destroyToast($event)" [toast]="toast" class="pointer-events-auto"></app-toast-item></li>
+	</ul>
+
+	<ul class="justify-self-center flex-col-reverse">
+		<li *ngFor="let toast of toasts['bottom-center']"><app-toast-item (close)="destroyToast($event)" [toast]="toast" class="pointer-events-auto"></app-toast-item></li>
+	</ul>
+
+	<ul class="justify-self-end flex-col-reverse">
+		<li *ngFor="let toast of toasts['bottom-right']"><app-toast-item (close)="destroyToast($event)" [toast]="toast" class="pointer-events-auto"></app-toast-item></li>
+	</ul>
+
+</ng-container>

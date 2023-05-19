@@ -41,15 +41,16 @@ export class SelectFieldComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.trigger.opened.pipe(
       takeUntil(this.destroyed),
-      tap(() => this.interval = setTimeout(() => this.searchInput.nativeElement.focus())),
-    ).subscribe(() => this.menuState$.next('opened'));
+    ).subscribe(() => {
+      this.menuState$.next('opened');
+      this.interval = setTimeout(() => this.searchInput.nativeElement.focus());
+    });
     this.trigger.closed.pipe(takeUntil(this.destroyed)).subscribe(() => this.menuState$.next('closed'));
-
     this.width$.next(this.menuContainer.nativeElement.offsetWidth + 'px');
 
     this.resizeObserver = new ResizeObserver(entries => this.zone.run(() => {
       const [idx, baseWidth] = [0, 144];
-      const width = entries.at(idx)?.borderBoxSize.at(idx)?.inlineSize ?? baseWidth;
+      const width = entries.at(idx)?.borderBoxSize?.at(idx)?.inlineSize ?? baseWidth;
       return this.width$.next(`${width}px`);
     }));
     this.resizeObserver.observe(this.menuContainer.nativeElement);
