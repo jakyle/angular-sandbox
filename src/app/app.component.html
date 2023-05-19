@@ -1,6 +1,6 @@
 <main class="relative w-screen h-screen flex justify-center items-center bg-slate-200">
 	<app-toast-overlay></app-toast-overlay>
-	<section class="grid grid-cols-3 grid-rows-2 gap-4">
+	<section class="grid grid-cols-3 gap-4">
 		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-sky-500"(click)="emitToast(ToastType.INFO, Position.TOP_LEFT, 5000)">5000 TL</button>
 		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-green-500"(click)="emitToast(ToastType.SUCCESS, Position.TOP_CENTER, 2000, 'HOORAY, YOU DID IT!')">2000 TC</button>
 		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-yellow-500"(click)="emitToast(ToastType.WARNING, Position.TOP_RIGHT, 5000, 'Captain, we are reaching critical mass!')">TR 5000</button>
