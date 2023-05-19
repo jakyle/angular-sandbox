@@ -10,7 +10,7 @@ import { Position } from '../toast';
 export class ToastOverlayComponent {
 
   // how do we position these pesky toasts? with css grid!
-  @HostBinding('class') class = 'w-screen h-screen absolute top-0 left-0 p-4 grid grid-cols-3 pointer-events-none [&>ul]:flex [&>ul]:overflow-hidden [&>ul]:gap-y-2 [&>ul]:relative overflow-hidden';
+  @HostBinding('class') class = 'w-screen h-screen absolute top-0 left-0 p-4 grid grid-cols-3 overflow-hidden pointer-events-none [&>ul]:flex [&>ul]:overflow-hidden [&>ul]:gap-y-2';
 
   constructor(private toastService: ToastService) { }
 
