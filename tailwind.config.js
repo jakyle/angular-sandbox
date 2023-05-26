@@ -4,8 +4,13 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'text-color': 'color',
+      },
+    },
     data: {
+      selected: 'item~="selected"',
       opened: 'menu~="opened"',
       closed: 'menu~="closed"',
       'info': 'type="info"',

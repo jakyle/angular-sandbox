@@ -1,0 +1,31 @@
+<div #track *ngIf="vm$ | async as vm" class="relative flex items-center w-full h-8 bg-white py-1 px-2 rounded-full isolate overflow-x-hidden">
+	<div #slider
+		[class.transition-all]="!vm.isDragging"
+		class="absolute flex justify-end items-center left-0 top-0 h-full bg-slate-400 z-10 rounded-full pr-2"
+		[style.width.px]="vm.trackDimensions.sliderWidth">
+	</div>
+
+	<div #trackBall
+		tabindex="0"
+		(dragstart)="dragStart($event)"
+		(drag)="drag($event)"
+		(dragend)="dragEnd($event)"
+		(keyup.arrowleft)="moveTrackBall('left')"
+		(keyup.arrowright)="moveTrackBall('right')"
+		draggable="true"
+		[class.transition-all]="!vm.isDragging"
+		[style.left.px]="vm.trackDimensions.trackBallLeft"
+		class="absolute z-30 flex items-center justify-center cursor-pointer w-7 h-7 rounded-full bg-slate-950 border-2 text-white">{{vm.value}}</div>
+
+	<datalist #dataList class="relative z-20 w-full h-full flex flex-row justify-between items-center rounded-xl">
+		<option 
+			#values
+			*ngFor="let option of vm.options; trackBy: trackValue"
+			(click)="optionSelect($event)"
+			class="cursor-pointer h-full w-5 flex items-center justify-center"
+			value="{{option}}"
+		>
+			<span class="relative z-40">{{option | number}}</span>
+		</option>
+	</datalist>
+</div>

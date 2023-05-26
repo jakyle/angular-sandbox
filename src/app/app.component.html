@@ -1,11 +1,3 @@
-<main class="relative w-screen h-screen flex justify-center items-center bg-slate-200">
-	<app-toast-overlay></app-toast-overlay>
-	<section class="grid grid-cols-3 grid-rows-2 gap-4">
-		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-sky-500"(click)="emitToast(ToastType.INFO, Position.TOP_LEFT, 5000)">5000 TL</button>
-		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-green-500"(click)="emitToast(ToastType.SUCCESS, Position.TOP_CENTER, 2000, 'HOORAY, YOU DID IT!')">2000 TC</button>
-		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-yellow-500"(click)="emitToast(ToastType.WARNING, Position.TOP_RIGHT, 5000, 'Captain, we are reaching critical mass!')">TR 5000</button>
-		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-red-500"(click)="emitToast(ToastType.DANGER, Position.BOTTOM_LEFT, 10000, 'ERROR ERROR ERROR!!!')">BL 10000</button>
-		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-sky-500"(click)="emitToast(ToastType.INFO, Position.BOTTOM_CENTER, 600, 'I\'m fast as fuck boi!')">BC 600</button>
-		<button class="h-16 w-32 flex items-center justify-center rounded px-4 py-3 text-white bg-green-500"(click)="emitToast(ToastType.SUCCESS, Position.BOTTOM_RIGHT, 2000, 'And thats toasts baby! 😏')">BR 2000</button>
-	</section>
+<main class="w-screen h-screen flex justify-center items-center bg-slate-700">
+	<app-slider class="w-96"></app-slider>
 </main>

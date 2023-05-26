@@ -15,6 +15,7 @@ import { EditorComponent } from './editor/editor.component';
 import { SafePipe } from './safe.pipe';
 import { ToastOverlayComponent } from './toast-overlay/toast-overlay.component';
 import { ToastItemComponent } from './toast-overlay/toast-item/toast-item.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ToastItemComponent } from './toast-overlay/toast-item/toast-item.compon
     SafePipe,
     ToastOverlayComponent,
     ToastItemComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
