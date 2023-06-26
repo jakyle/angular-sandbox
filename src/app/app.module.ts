@@ -4,6 +4,7 @@ import { CdkMenuModule } from '@angular/cdk/menu';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
+import { CdkTableModule } from '@angular/cdk/table';
 
 import { AppComponent } from './app.component';
 import { SelectFieldComponent } from './select-field/select-field.component';
@@ -16,6 +17,12 @@ import { SafePipe } from './safe.pipe';
 import { ToastOverlayComponent } from './toast-overlay/toast-overlay.component';
 import { ToastItemComponent } from './toast-overlay/toast-item/toast-item.component';
 import { SliderComponent } from './slider/slider.component';
+import { LikeMineTableComponent } from './like-mine-table/like-mine-table.component';
+import { DataCellSplitComponent } from './like-mine-table/data-cell-split/data-cell-split.component';
+import { PercentageCircleComponent } from './like-mine-table/percentage-circle/percentage-circle.component';
+import { TagListCellComponent } from './like-mine-table/tag-list-cell/tag-list-cell.component';
+import { TagComponent } from './like-mine-table/tag-list-cell/tag/tag.component';
+import { TableCellFactoryComponent } from './like-mine-table/table-cell-factory/table-cell-factory.component';
 
 @NgModule({
   declarations: [
@@ -30,11 +37,18 @@ import { SliderComponent } from './slider/slider.component';
     ToastOverlayComponent,
     ToastItemComponent,
     SliderComponent,
+    LikeMineTableComponent,
+    DataCellSplitComponent,
+    PercentageCircleComponent,
+    TagListCellComponent,
+    TagComponent,
+    TableCellFactoryComponent,
   ],
   imports: [
     BrowserModule,
     CdkMenuModule,
     OverlayModule,
+    CdkTableModule,
     ReactiveFormsModule,
     NgxEditorModule.forRoot({
       locals: {

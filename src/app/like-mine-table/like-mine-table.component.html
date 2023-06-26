@@ -1,0 +1,85 @@
+<style>
+	/* Hide scrollbar for Chrome, Safari and Opera */
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		/* IE and Edge */
+		scrollbar-width: none;
+		/* Firefox */
+	}
+</style>
+
+<div class="flex-1 flex flex-row overflow-y-auto">
+
+	<div #infoContainer (scroll)="handleVerticalScroll($event, 'info')"
+		class="flex-1 overflow-auto no-scrollbar border-r-2 border-r-gray-200">
+		<table class="w-full" cdk-table [dataSource]="likeMineInfoDataSource">
+
+			<ng-container *ngFor="let colInfo of likeMineInfoColumns" [cdkColumnDef]="colInfo.field">
+				<th cdk-header-cell class="bg-white text-stone-900" *cdkHeaderCellDef>{{colInfo.header}}
+				</th>
+				<td cdk-cell *cdkCellDef="let row" class="px-2 py-4 bg-white {{colInfo.classes}}">
+					<app-table-cell-factory [data]="row[colInfo.field]"></app-table-cell-factory>
+				</td>
+			</ng-container>
+
+			<tr class="border-b-2 border-b-violet-500 h-8 max-h-[4rem]" cdk-header-row
+				*cdkHeaderRowDef="likeMineInfoDisplayedColumns; sticky: true"></tr>
+			<tr #infoRows class="border-b-2 border-b-gray-200" [class.border-b-2]="!isLast" cdk-row
+				*cdkRowDef="let row; columns: likeMineInfoDisplayedColumns; let isLast = last"></tr>
+
+		</table>
+	</div>
+
+	<div #treatmentContainer (scroll)="handleVerticalScroll($event, 'treatment')" class="w-2/5 overflow-auto">
+		<table class="w-full" cdk-table [dataSource]="likeMineLineTreatmentDataSource" [fixedLayout]="true">
+			<ng-container *ngFor="let colInfo of likeMineLineTreatmentColumns" [cdkColumnDef]="colInfo.field">
+				<th cdk-header-cell *cdkHeaderCellDef
+					class="bg-slate-900 text-stone-50 border-b-2 border-r-2 border-r-gray-500 last:border-r-0 {{colInfo.classes}}">
+					{{colInfo.header}}
+				</th>
+				<td cdk-cell *cdkCellDef="let row"
+					class="px-2 py-4 align-top odd:bg-violet-200 bg-white {{colInfo.classes}}">
+					<div class="flex h-full">
+						<app-table-cell-factory [data]="row[colInfo.field]"></app-table-cell-factory>
+					</div>
+				</td>
+			</ng-container>
+
+			<tr class="border-b-2 border-b-gray-200 h-8 max-h-[4rem]" cdk-header-row
+				*cdkHeaderRowDef="treatmentDisplayedColumns; sticky: true"></tr>
+			<tr #treatmentRows class="border-b-2 border-b-gray-200" [class.border-b-2]="!isLast" cdk-row
+				*cdkRowDef="let row; columns: treatmentDisplayedColumns; let isLast = last"></tr>
+
+		</table>
+	</div>
+</div>
+
+<div class="flex justify-between w-full bg-white py-1 border-2 border-gray-200">
+	<div class="pl-4">{{pageOf}}</div>
+
+	<div class="flex flex-row justify-between w-4/5 text-violet-900 font-medium">
+		<button (click)="goToPreviousPage()" class="disabled:text-gray-200" [disabled]="currentPage === 1">&lt;
+			Previous</button>
+
+		<div class="flex gap-x-10">
+			<button *ngFor="let page of getPagesRange()" (click)="goToPage(page)" class="w-8 border-b-2"
+				[class.border-b-white]="currentPage !== page"
+				[ngClass]="{ 'text-fuchsia-900 border-b-fuchsia-900': currentPage === page }"
+				[disabled]="currentPage === page">
+				{{ page }}
+			</button>
+		</div>
+
+		<button (click)="goToNextPage()" class="disabled:text-gray-200" [disabled]="currentPage === totalPages">Next
+			&gt;</button>
+	</div>
+
+	<select [(ngModel)]="pageSize" (ngModelChange)="changePageSize()">
+		<option *ngFor="let size of pageSizes" [value]="size">{{ size }}</option>
+	</select>
+</div>

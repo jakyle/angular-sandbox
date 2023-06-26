@@ -17,6 +17,8 @@ module.exports = {
       'success': 'type="success"',
       'warning': 'type="warning"',
       'danger': 'type="danger"',
+      "row": 'dir="row"',
+      'col': 'dir="col"',
     },
   },
   plugins: [

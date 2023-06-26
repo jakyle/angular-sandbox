@@ -1,0 +1,21 @@
+<div *ngIf="cellSplitData; else noData;" class="w-full flex flex-col">
+	<ul class="flex flex-row gap-2">
+		<li *ngFor="let data of topData; last as isLast">{{data}}<span *ngIf="!isLast">,</span></li>
+	</ul>
+
+	<div class="w-full border-gray-500 border"></div>
+
+	<ul *ngIf="!bottomIsLink; else isLink" [attr.data-dir]="direction" class="flex data-row:flex-row data-col:flex-col">
+		<li *ngFor="let data of bottomData; last as isLast">{{data}}<span *ngIf="!isLast">,</span></li>
+	</ul>
+
+	<ng-template #isLink>
+		<a href="www.google.com">{{bottomData.join(' + ')}}</a>
+	</ng-template>
+</div>
+
+<ng-template #noData>
+	<div class="w-full h-full flex flex-col items-center justify-center">
+		<p class="text-stone-300">-</p>
+	</div>
+</ng-template>
