@@ -1,3 +1,22 @@
-<div>
-	{{percentage}}%
+<p class="font-medium text-sm">{{pct}}%</p>
+
+<div *ngFor="let deg of degrees" class="absolute flex justify-center z-20 w-full h-full" [style.transform]="deg">
+	<div class="h-5 w-px bg-white z-20"></div>
 </div>
+
+<svg class="absolute z-0 [&>circle]:stroke-[12]" viewBox="0 0 100 100">
+	<defs>
+		<linearGradient id="myGradient">
+			<stop offset="0%" stop-color="#ec4899" />
+			<stop offset="10%" stop-color="#d946ef" />
+			<stop offset="100%" stop-color="#8b5cf6" />
+		</linearGradient>
+	</defs>
+	<circle class="stroke-gray-200" [attr.r]="this.radius" cx="150" cy="50" fill="transparent"
+		[style.stroke-dasharray]="strokeDashArray" stroke-dashoffset="0" transform='rotate(-90 100 100)'></circle>
+
+	<circle #circle stroke="url(#myGradient)" [attr.r]="this.radius" cx="150" cy="50" fill="transparent"
+		[style.stroke-dasharray]="strokeDashArray" [style.stroke-dashoffset]="strokeDashOffset"
+		transform='rotate(-90 100 100)'>
+	</circle>
+</svg>

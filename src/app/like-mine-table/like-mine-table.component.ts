@@ -42,7 +42,7 @@ export class LikeMineTableComponent implements OnInit, AfterViewChecked {
   likeMineInfoColumns = [
     { field: 'isSelected', header: '', classes: '!w-4', display: true },
     { field: 'patient', header: 'Patient', classes: 'w-auto', display: false },
-    { field: 'percentageMatch', header: 'Match %', classes: '!w-8', display: true },
+    { field: 'percentageMatch', header: 'Match %', classes: '!w-4', display: true },
     { field: 'diseaseStaging', header: 'Disease / stage', classes: '!w-32', display: true },
     { field: 'bioMarkers', header: 'Biomarkers', classes: 'w-80 min-w-fit', display: true },
     { field: 'age', header: 'Age', classes: '!w-4', display: false },
